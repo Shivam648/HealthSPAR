@@ -1,0 +1,258 @@
+/*-----------------
+	6. Sidebar
+-----------------------*/
+
+.sidebar {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    top: 50px;
+    width: 230px;
+    z-index: 1039;
+    background-color: #393B51;
+    bottom: 0;
+    margin-top: 0px;
+    position: fixed;
+    left: 0;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .sidebar.opened {
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  
+  .sidebar-inner {
+    height: 100%;
+    transition: all 0.2s ease-in-out 0s;
+  }
+  
+  .sidebar-menu ul {
+    font-size: 14px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sidebar-menu li a {
+    color: #ffffff;
+    display: block;
+    font-size: 15px;
+    height: auto;
+    padding: 0 20px;
+  }
+  
+  .sidebar-menu li a:hover {
+    color: #b3baff;
+  }
+  
+  .sidebar-menu li.active a {
+    color: #000000;
+    background-color: #f3f3f3;
+  }
+  
+  .menu-title {
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 20px;
+  }
+  
+  .menu-title>i {
+    float: right;
+    line-height: 40px;
+  }
+  
+  .fixed-sidebar-right {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 300px;
+    margin-right: -300px;
+    bottom: 0;
+    z-index: 101;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  
+  .sidebar .sidebar-menu>ul>li>a span {
+    transition: all 0.2s ease-in-out 0s;
+    display: inline-block;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+  
+  .sidebar .sidebar-menu>ul>li>a span.badge {
+    color: #fff;
+    margin-left: auto;
+  }
+  
+  .sidebar-menu ul ul a {
+    display: block;
+    font-size: 14px;
+    padding: 9px 10px 9px 50px;
+    position: relative;
+  }
+  
+  .sidebar-menu ul ul {
+    background-color: #f3f3f3;
+    display: none;
+  }
+  
+  .sidebar-menu ul ul ul a {
+    padding-left: 70px;
+  }
+  
+  .sidebar-menu ul ul ul ul a {
+    padding-left: 90px;
+  }
+  
+  .sidebar-menu>ul>li {
+    position: relative;
+  }
+  
+  .sidebar-menu .menu-arrow {
+    -webkit-transition: -webkit-transform 0.15s;
+    -o-transition: -o-transform 0.15s;
+    transition: transform .15s;
+    position: absolute;
+    right: 15px;
+    display: inline-block;
+    font-family: 'FontAwesome';
+    text-rendering: auto;
+    line-height: 40px;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    line-height: 18px;
+    top: 15px;
+  }
+  
+  .sidebar-menu .menu-arrow:before {
+    content: "\f105";
+  }
+  
+  .sidebar-menu li a.subdrop .menu-arrow {
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  
+  .sidebar-menu ul ul a .menu-arrow {
+    top: 6px;
+  }
+  
+  .sidebar-menu a {
+    transition: unset;
+    -moz-transition: unset;
+    -o-transition: unset;
+    -ms-transition: unset;
+    -webkit-transition: unset;
+  }
+  
+  .sidebar-menu>ul>li>a {
+    padding: 12px 20px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    transition: all 0.2s ease-in-out 0s;
+  }
+  
+  .sidebar-menu ul li a i {
+    align-items: center;
+    display: inline-flex;
+    font-size: 18px;
+    min-height: 24px;
+    line-height: 18px;
+    width: 20px;
+    transition: all 0.2s ease-in-out 0s;
+  }
+  
+  .sidebar-menu ul li.menu-title a i {
+    font-size: 16px;
+    margin-right: 0;
+    text-align: right;
+    width: auto;
+  }
+  
+  @media only screen and (min-width: 991px) {
+    #toggle_btn {
+      color: #fff;
+      float: left;
+      font-size: 20px;
+      line-height: 50px;
+      padding: 0 10px;
+    }
+  
+    .mini-sidebar .header-left .logo span {
+      display: none;
+    }
+  
+    .mini-sidebar .header .header-left {
+      padding: 0 5px;
+      width: 60px;
+    }
+  
+    .mini-sidebar .sidebar {
+      width: 60px;
+    }
+  
+    .mini-sidebar.expand-menu .sidebar {
+      width: 230px;
+    }
+  
+    .mini-sidebar .menu-title {
+      visibility: hidden;
+      white-space: nowrap;
+    }
+  
+    .mini-sidebar.expand-menu .menu-title {
+      visibility: visible;
+    }
+  
+    .modal-open .mini-sidebar .sidebar {
+      z-index: 1051;
+    }
+  
+    .mini-sidebar .sidebar .sidebar-menu ul>li>a span {
+      display: none;
+      transition: all 0.2s ease-in-out;
+      opacity: 0;
+    }
+  
+    .mini-sidebar.expand-menu .sidebar .sidebar-menu ul>li>a span {
+      display: inline;
+      opacity: 1;
+    }
+  
+    .mini-sidebar .page-wrapper {
+      margin-left: 60px;
+    }
+  }
+  
+  
+  /*-----------------
+      42. Responsive
+  -----------------------*/
+  
+  @media only screen and (max-width: 991.98px) {
+  
+      .sidebar {
+          margin-left: -225px;
+          width: 225px;
+      }
+  
+      .sidebar {
+          -webkit-transition: all 0.4s ease;
+          -moz-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+      }
+  }
+  
+  

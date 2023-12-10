@@ -1,0 +1,116 @@
+<div class="main-wrapper">
+  <app-hcp-d-sidebar></app-hcp-d-sidebar>
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body d-flex align-items-start">
+              <div class="pic">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="card-info">
+                <h3>{{ hospital.doctors.length }}</h3>
+                <span class="widget-title1">Doctors</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body d-flex align-items-start">
+              <div class="pic">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1430/1430453.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="card-info">
+                <h3>{{ getUniquePatientCount() }}</h3>
+                <span class="widget-title1">Patients</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body d-flex align-items-start">
+              <div class="pic">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/4326/4326320.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="card-info">
+                <h3>
+                  {{
+                    filterAppointmentsByStatus("BOOKED") +
+                      filterAppointmentsByStatus("RESCHEDULE")
+                  }}
+                </h3>
+                <span class="widget-title1">Bookings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-12 col-xl-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title d-inline-block">Appointments</h4>
+              <a
+                [routerLink]="['/hospital/appointment']"
+                class="btn btn-primary float-right"
+                >View all
+              </a>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table mb-0">
+                  <tbody>
+                    <tr *ngFor="let appointment of appointments">
+                      <ng-container
+                        *ngIf="appointment.status != 'CANCEL' && appointment.status != 'INITIALIZED'"
+                      >
+                        <td style="min-width: 200px">
+                          <a class="avatar" href="profile.html">B</a>
+                          <h2>
+                            <a href="profile.html"
+                              >{{ appointment.patientName }}
+                            </a>
+                          </h2>
+                        </td>
+                        <td>
+                          <h5 class="time-title p-0">Appointment With</h5>
+                          <p>Dr. {{ appointment.doctor }}</p>
+                        </td>
+                        <td>
+                          <h5 class="time-title p-0">Date</h5>
+                          <p>{{ appointment.dateTime | date }}</p>
+                        </td>
+                        <td class="text-right">
+                          <a
+                            href="appointments.html"
+                            class="btn btn-outline-primary take-btn"
+                            >Take up</a
+                          >
+                        </td>
+                      </ng-container>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

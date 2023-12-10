@@ -1,0 +1,31 @@
+server:
+  port: 8070
+spring:
+  application:
+    name: recommend-service
+  neo4j:
+    uri: ${AURA_URI}
+    authentication:
+      username: ${AURA_USER}
+      password: ${AURA_PASSWORD}
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+logging:
+  level:
+    root: info
+    com.stackroute: warn
+  pattern:
+    console: "%d{dd/MM/yyy HH:mm:ss} %-5level - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs\recommend-service.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8076/eureka/

@@ -1,0 +1,39 @@
+server:
+  port: 8023 # Port of the application will be assigned dynamically
+spring:
+  application:
+    name: booked-appointments
+  datasource:
+    url: jdbc:mysql://localhost:3306/appointments_db
+    username: root
+
+    password: shivam
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver # MySQL driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect # MySQL version
+#logging:
+#  level:
+#    root: info # Logging level of the application
+#    org.hibernate.type.descriptor.sql.BasicBinder: trace # Logging level of the SQL queries
+#    org.hibernate.SQL: trace # Logging level of the SQL queries
+#    in.stackroute.booked-appointments: debug # Logging level of the application
+#  pattern:
+#    console: "%d{dd/MM/yyy HH:mm:ss} %-5level - %msg%n" # Pattern of the console logs
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # Pattern of the file logs
+#  file:
+#    name: logs\booked-appointments.log # Name of the log file
+#  logback:
+#    rollingpolicy:
+#      max-file-size: 10MB # Maximum size of the log file
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/ # URL of the Eureka server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8076/eureka/

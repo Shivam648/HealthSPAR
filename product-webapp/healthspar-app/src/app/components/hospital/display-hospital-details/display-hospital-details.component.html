@@ -1,0 +1,142 @@
+<div class="main-wrapper">
+  <app-hcp-d-sidebar></app-hcp-d-sidebar>
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row mb-4">
+        <div class="col-sm-7 col-6">
+          <h4 class="page-title">Hospital Profile</h4>
+        </div>
+        <div class="col-sm-5 col-6 text-right m-b-30">
+          <a [routerLink]="['/hospital/update',hospital.hospitalId]" class="btn btn-primary btn-rounded"><i
+              class="fa fa-plus"></i> Edit Profile</a>
+          <a [routerLink]="['/hospital/update']" class="btn btn-primary btn-rounded"
+            ><i class="fa fa-plus"></i> Edit Profile</a
+          >
+        </div>
+      </div>
+      <div class="card-box profile-header">
+        <div class="row mb-4">
+          <div class="col-md-12">
+            <div class="profile-view">
+              <div class="profile-img-wrap">
+                <div class="profile-img">
+                  <a href="#"><img class="avatar" [src]="
+                        'http://localhost:8070/get/image/' + hospital.fileName
+                      " alt="" /></a>
+                </div>
+              </div>
+              <div class="profile-basic">
+                <div class="row">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="profile-info-left">
+                        <h1 class="user-name m-t-0 mb-0">
+                          {{ hospital.hospitalName }}
+                        </h1>
+                        <div class="staff-msg">
+                          <a href="chat.html" class="btn btn-primary">Edit Image</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <ul class="personal-info">
+                        <li>
+                          <span class="title">Phone:</span>
+                          <span class="text"><a href="#">{{
+                              hospital.hospitalPhoneNumber
+                              }}</a></span>
+                        </li>
+                        <li>
+                          <span class="title">Email:</span>
+                          <span class="text"><a href="#">{{ hospital.hospitalEmail }}</a></span>
+                        </li>
+
+                        <li>
+                          <span class="title">Address:</span>
+                          <span class="text">
+                            {{ hospital.city.name }}, {{ hospital.city.state }},
+                            {{ hospital.city.country }},
+                            {{ hospital.city.zip }},
+                          </span>
+                        </li>
+                        <li>
+                          <span class="title">Ammenities:</span>
+                          <span class="text">{{
+                            hospital.hospitalAmenities
+                            }}</span>
+                        </li>
+                        <br>
+                        <br>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="profile-tabs mt-4">
+          <ul class="nav nav-tabs nav-tabs-bottom">
+            <li class="nav-item">
+              <a class="nav-link active" href="#about-cont" data-toggle="tab">
+                Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bottom-tab2" data-toggle="tab">Asked Question</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane show active" id="about-cont">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">S.No</th>
+                      <th scope="col">Doctor Name</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Qualification</th>
+                      <th scope="col">Year Of Experince</th>
+                      <th scope="col">Duty Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let doctor of hospital.doctors; let i = index">
+                      <td>{{ i }}</td>
+                      <td>{{ doctor.doctorName }}</td>
+                      <td>{{ doctor.department }}</td>
+                      <td>{{ doctor.qualification }}</td>
+                      <td>{{ doctor.yearOfExperience }}</td>
+                      <td>{{ doctor.startTime }} - {{ doctor.endTime }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="bottom-tab2">
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">S.No</th>
+                      <th scope="col">Question</th>
+                      <th scope="col">Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let askedQns of hospital.frequentlyAskedQuestion; let i = index">
+                      <td>{{ i }}</td>
+                      <td>{{ askedQns.question }}</td>
+                      <td>{{ askedQns.answer }}</td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

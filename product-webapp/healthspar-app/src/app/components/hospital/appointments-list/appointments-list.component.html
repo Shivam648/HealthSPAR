@@ -1,0 +1,48 @@
+<div class="main-wrapper">
+  <app-hcp-d-sidebar></app-hcp-d-sidebar>
+  <div class="page-wrapper">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">Patient</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Date</th>
+            <th scope="col">Treatment For</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments; let i = index">
+            <ng-container
+              *ngIf="
+                appointment.status == 'BOOKED' ||
+                appointment.status === 'RESCHEDULE'
+              "
+            >
+              <td>{{ i + 1 }}</td>
+              <td>{{ appointment.patientName }}</td>
+              <td>{{ appointment.doctor }}</td>
+              <td>{{ appointment.dateTime | date : "dd-MMM-yyyy HH:mm a" }}</td>
+              <td>{{ appointment.treatmentType }}</td>
+              <td>
+                <a
+                  [routerLink]="[
+                    '/hospital/reschedule',
+                    appointment.appointmentId
+                  ]"
+                  class="my-2"
+                >
+                  <button class="btn btn-success mx-2">Reschedule</button>
+                </a>
+                <button class="btn btn-danger mx-2" (click)="cancelAppointment(appointment.appointmentId)">Cancel</button>
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- /#wrapper -->

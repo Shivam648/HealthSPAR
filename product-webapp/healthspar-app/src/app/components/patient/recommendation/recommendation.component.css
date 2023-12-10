@@ -1,0 +1,326 @@
+
+/*-----------------
+	7. Content
+-----------------------*/
+
+.page-wrapper {
+    left: 0;
+    margin-left: 230px;
+    padding-top: 50px;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  
+  .page-wrapper>.content {
+    padding: 30px;
+  }
+  
+  .card{
+    padding: 30px;
+    background-color: #042E5F;
+    color: #fff;
+  }
+  
+  /*-----------Card Tile-----------*/
+  .card{
+    background-color: #042E5F;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .card .pic {
+    overflow: hidden;
+    width: 180px;
+  }
+  
+  .card .pic img {
+    transition: ease-in-out 0.3s;
+  }
+  
+  .card .card-info {
+    padding-left: 20px;
+  }
+  
+  .card-info h3{
+    font-weight: 500;
+    font-size: 50px;
+  }
+  
+  .card span {
+    display: block;
+    font-size: 30px;
+    padding-bottom: 10px;
+    position: relative;
+    font-weight: 300;
+    text-align: center;
+  }
+  
+  .card span::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #b2c8dd;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .card p {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+  }
+  
+  /* Upcoming Appointments */
+  /*-----------------
+      2. Table
+  -----------------------*/
+  
+  .table {
+    color: #000;
+    border: 1px solid #f0f0f0;
+  }
+  
+  .table.table-white {
+    background-color: #fff;
+  }
+  
+  .table>tbody>tr>td {
+    font-weight: 300;
+  }
+  
+  .table-striped>tbody>tr:nth-of-type(2n + 1) {
+    background-color: #f6f6f6;
+  }
+  
+  table.table td .avatar {
+    margin: 0 5px 0 0;
+  }
+  
+  table.table td h2 {
+    display: inline-block;
+    font-size: inherit;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+  }
+  
+  table.table td h2 a {
+    color: #757575;
+  }
+  
+  table.table td h2 a:hover {
+    color: #009efb;
+  }
+  
+  table.table td h2 span {
+    color: #9e9e9e;
+    display: block;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  
+  .card {
+    margin-bottom: 30px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    border: 0;
+  }
+  
+  .card .card-header {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0 none;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 15px;
+  }
+  
+  .card .card-header .card-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+    padding: 5px 0;
+  }
+  
+  .table h5 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  
+  .table h5+p {
+    color: #9e9e9e;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 0;
+  }
+  
+  .card-title>a.btn {
+    color: #fff;
+  }
+  
+  .avatar {
+    background-color: #aaa;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    height: 38px;
+    line-height: 38px;
+    margin: 0 10px 0 0;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 38px;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  .avatar:hover {
+    color: #fff;
+  }
+  
+  .avatar>img {
+    width: 100%;
+    display: block;
+  }
+  
+  .display-table {
+    display: table;
+    table-layout: fixed;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .table-row {
+    display: table-row;
+    height: 100%;
+  }
+  
+  .table-body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .table-content {
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* New Patients */
+  
+  .btn-primary-one {
+    border: 1px solid #ffbc35;
+    border-radius: 25px;
+    width: 100px;
+    background: transparent;
+    color: #000;
+  }
+  
+  .btn-primary-two {
+    border: 1px solid #009efb;
+    border-radius: 25px;
+    width: 100px;
+    background: transparent;
+    color: #000;
+  }
+  
+  .btn-primary-three {
+    border: 1px solid #55ce63;
+    border-radius: 25px;
+    width: 100px;
+    background: transparent;
+    color: #000;
+  }
+  
+  .btn-primary-four {
+    border: 1px solid #ffbc35;
+    border-radius: 25px;
+    width: 100px;
+    background: transparent;
+    color: #000;
+  }
+  
+  .new-patient-table {
+    display: table;
+  }
+  
+  .new-patient-table td,
+  .new-patient-table th {
+    vertical-align: middle;
+  }
+  
+  .new-patient-table tr td img {
+    margin-right: 5px;
+  }
+  
+  
+  /* Add additional styles as needed */
+  
+  /*-----------------
+      42. Responsive
+  -----------------------*/
+  
+  @media only screen and (max-width: 991.98px) {
+  
+    .page-wrapper {
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  
+    .slide-nav .sidebar {
+      margin-left: 0;
+    }
+  
+    .slide-nav .page-wrapper {
+      left: 225px;
+      margin-left: 0;
+    }
+  
+    .page-wrapper {
+      -webkit-transition: all 0.4s ease;
+      -moz-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+    }
+  }
+  
+  @media only screen and (max-width: 575.98px) {
+  
+    .page-wrapper>.content {
+      padding: 15px;
+    }
+  
+    .page-wrapper {
+      padding-top: 50px;
+    }
+  
+    .content {
+      padding: 0 50px;
+    }
+  
+    .page-wrapper {
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+  
+  a{
+    text-decoration: none;
+  }

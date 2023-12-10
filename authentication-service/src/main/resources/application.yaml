@@ -1,0 +1,42 @@
+server:
+  port: 8085 # Port of the application will be assigned dynamically
+spring:
+  application:
+    name: authentication-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/authentication_db
+    username: root
+    password: Rkr@04jan2001Rkr
+
+    driver-class-name: com.mysql.cj.jdbc.Driver # MySQL driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect # MySQL version
+logging:
+  level:
+    root: info # Logging level of the application
+    org.hibernate.type.descriptor.sql.BasicBinder: trace # Logging level of the SQL queries
+    org.hibernate.SQL: trace # Logging level of the SQL queries
+    com.stackroute: debug # Logging level of the application
+  pattern:
+    console: "%d{dd/MM/yyy HH:mm:ss} %-5level - %msg%n" # Pattern of the console logs
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # Pattern of the file logs
+  file:
+    name: logs\authentication-service.log # Name of the log file
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB # Maximum size of the log file
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8076/eureka/

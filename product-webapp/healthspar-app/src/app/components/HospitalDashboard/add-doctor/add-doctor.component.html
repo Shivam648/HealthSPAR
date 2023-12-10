@@ -1,0 +1,173 @@
+<div class="main-wrapper">
+  <app-hcp-d-sidebar></app-hcp-d-sidebar>
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row">
+        <div class="col-lg-12 offset-lg-1">
+          <h1 class="text-primary">Add Doctor</h1>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-10 offset-lg-1">
+          <form [formGroup]="doctorDetailForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="dname" class="col-form-label"
+                    >Doctor Name <span class="text-danger">*</span></label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="dname"
+                    placeholder="Enter Doctor Name"
+                    class="form-control form-control-lg"
+                    formControlName="doctorName"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="department" class="col-form-label"
+                    >Department <span class="text-danger">*</span></label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="department"
+                    placeholder="Enter Doctors Department"
+                    class="form-control form-control-lg"
+                    formControlName="department"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="qualification" class="col-form-label"
+                    >Qualification <span class="text-danger">*</span></label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="qualification"
+                    placeholder="Enter Qualification"
+                    class="form-control form-control-lg"
+                    formControlName="qualification"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="languagesSpoken" class="col-form-label"
+                    >Known Language <span class="text-danger">*</span></label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="languagesSpoken"
+                    placeholder="Enter Known Langiage"
+                    class="form-control form-control-lg"
+                    formControlName="languagesSpoken"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="yearOfExperience" class="col-form-label"
+                    >Experience (year) <span class="text-danger">*</span></label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="yearOfExperience"
+                    placeholder="Enter Year Of Experience"
+                    class="form-control form-control-lg"
+                    formControlName="yearOfExperience"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="startTime" class="col-form-label"
+                    >Start Time <span class="text-danger">*</span></label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="time"
+                    id="startTime"
+                    placeholder="Enter Doctors In Time"
+                    class="form-control form-control-lg"
+                    formControlName="startTime"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="endTime" class="col-form-label"
+                    >End Time <span class="text-danger">*</span></label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="time"
+                    id="endTime"
+                    placeholder="Enter Doctors Out Time"
+                    class="form-control form-control-lg"
+                    formControlName="endTime"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-group">
+                  <label>Avatar</label>
+                  <div class="profile-upload">
+                    <div class="upload-img">
+                      <img alt="" src="assets/img/user.jpg" />
+                    </div>
+                    <div class="upload-input">
+                      <input type="file" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mb-4">
+              <div class="col-auto">
+                <label for="bio" class="col-form-label">Bio (Optional)</label>
+              </div>
+              <div class="form-outline">
+                <textarea
+                  type="text"
+                  id="bio"
+                  rows="5"
+                  placeholder="Add more about doctor"
+                  class="form-control form-control-lg"
+                  formControlName="bio"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="m-t-20 text-center">
+              <button class="btn btn-primary submit-btn">Create Doctor</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.main-wrapper{
+  background-color: #E6E6E6;
+}
+
+
+label{
+  font-size: 1.5rem;
+}
+
+
+form{
+  background-color: white;
+    width: 80%;
+    margin: 0 auto;
+    padding: 12px;
+}
+
+h1{
+  margin-left: 162px;
+}

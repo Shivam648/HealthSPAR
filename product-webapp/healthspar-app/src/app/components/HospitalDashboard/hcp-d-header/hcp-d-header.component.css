@@ -1,0 +1,167 @@
+/*-----------------
+	5. Header
+-----------------------*/
+
+.header {
+  background-color: #525571;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1039;
+  height: 50px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.header .header-left {
+  float: left;
+  height: 50px;
+  padding: 0 20px;
+  position: relative;
+  text-align: center;
+  width: 230px;
+  z-index: 1;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.logo span {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+@media only screen and (min-width: 991px) {
+  #toggle_btn {
+    color: #fff;
+    float: left;
+    font-size: 20px;
+    line-height: 50px;
+    padding: 0 10px;
+  }
+
+  .mini-sidebar .header-left .logo span {
+    display: none;
+  }
+
+  .mini-sidebar .header .header-left {
+    padding: 0 5px;
+    width: 60px;
+  }
+
+  .mini-sidebar .sidebar {
+    width: 60px;
+  }
+
+  .mini-sidebar.expand-menu .sidebar {
+    width: 230px;
+  }
+
+  .mini-sidebar .menu-title {
+    visibility: hidden;
+    white-space: nowrap;
+  }
+
+  .mini-sidebar.expand-menu .menu-title {
+    visibility: visible;
+  }
+
+  .modal-open .mini-sidebar .sidebar {
+    z-index: 1051;
+  }
+
+  .mini-sidebar .sidebar .sidebar-menu ul>li>a span {
+    display: none;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+  }
+
+  .mini-sidebar.expand-menu .sidebar .sidebar-menu ul>li>a span {
+    display: inline;
+    opacity: 1;
+  }
+
+  .mini-sidebar .page-wrapper {
+    margin-left: 60px;
+  }
+}
+
+.mobile_btn {
+  display: none;
+}
+
+@media only screen and (max-width: 991.98px) {
+
+    .header .header-left {
+      position: absolute;
+      width: 100%;
+    }
+
+    .mobile_btn {
+      display: block;
+    }
+
+    .page-title-box {
+      display: none;
+    }
+
+    .sidebar {
+      margin-left: -225px;
+      width: 225px;
+    }
+
+    .page-wrapper {
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .slide-nav .sidebar {
+      margin-left: 0;
+    }
+
+    a.mobile_btn {
+      color: #fff;
+      font-size: 24px;
+      height: 50px;
+      left: 0;
+      line-height: 50px;
+      padding: 0 20px;
+      position: absolute;
+      top: 0;
+      width: 60px;
+      z-index: 10;
+    }
+
+    .slide-nav .page-wrapper {
+      left: 225px;
+      margin-left: 0;
+    }
+
+    .invoices-view {
+      width: 100%;
+      float: none;
+    }
+
+    #toggle_btn {
+      display: none;
+    }
+
+    .sidebar {
+      -webkit-transition: all 0.4s ease;
+      -moz-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+    }
+
+    .page-wrapper {
+      -webkit-transition: all 0.4s ease;
+      -moz-transition: all 0.4s ease;
+      transition: all 0.4s ease;
+    }
+}

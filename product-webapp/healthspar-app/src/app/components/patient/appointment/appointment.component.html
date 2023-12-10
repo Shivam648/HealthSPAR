@@ -1,0 +1,67 @@
+<div class="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="page-wrapper">
+    <div class="container">
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">Patient</th>
+            <th scope="col">Hospital</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Date</th>
+            <th scope="col">Treatment For</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments; let i = index">
+            <ng-container *ngIf="appointment.status != 'CANCEL'">
+              <td>{{ i + 1 }}</td>
+              <td>{{ appointment.patientName }}</td>
+              <ng-container *ngIf="hospitals[i]?.hospitalName">
+                <td>{{ hospitals[i].hospitalName }}</td>
+              </ng-container>
+              <td>{{ appointment.doctor }}</td>
+              <td>
+                {{ appointment.dateTime | date : "dd-MMM-yyyy HH:mm a" }}
+              </td>
+              <td>{{ appointment.treatmentType }}</td>
+              <td
+                *ngIf="
+                  appointment.status == 'BOOKED' ||
+                  appointment.status === 'RESCHEDULE'
+                "
+              >
+                <a
+                  [routerLink]="[
+                    '/patient/reschedule',
+                    appointment.appointmentId
+                  ]"
+                  class="my-2"
+                >
+                  <button class="btn btn-success mx-2">Reschedule</button>
+                </a>
+                <button
+                  class="btn btn-danger mx-2"
+                  (click)="cancelAppointment(appointment.appointmentId)"
+                >
+                  Cancel
+                </button>
+              </td>
+              <td *ngIf="appointment.status === 'INITIALIZED'">
+                <button class="btn btn-success mx-2">Pay</button>
+                <button
+                  class="btn btn-danger mx-2"
+                  (click)="cancelAppointment(appointment.appointmentId)"
+                >
+                  Cancel
+                </button>
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

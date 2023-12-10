@@ -1,0 +1,72 @@
+cache:
+  key: "maven3"
+  paths:
+    - .m2/repository
+
+stages:
+  - package
+  - test
+  - java_quality
+  - ng_quality
+
+maven_build:
+  image: maven:3-openjdk-17
+  stage: package
+  script: mvn clean package -DskipTests=true -B
+  only:
+    - main
+    - master
+    - v1.0.0
+    - v1.0.1
+    - v1.0.2
+    - v1.0.3
+    - stage
+
+  artifacts:
+    paths:
+      - /target/*.jar
+
+test_coverage:
+  image: maven:3-openjdk-17
+  stage: test
+  only:
+    - main
+    - master
+    - v1.0.0
+    - v1.0.1
+    - v1.0.2
+    - v1.0.3
+    - stage
+  script:
+    - mvn clean test
+
+java_lint:
+  image: maven:3-openjdk-17
+  stage: java_quality
+  script:
+    - mvn -Dmaven.repo.local=/root/.m2/repository clean install -DskipTests=true -B
+    - mvn -Dmaven.repo.local=/root/.m2/repository pmd:check -B
+  only:
+    - main
+    - master
+    - v1.0.0
+    - v1.0.1
+    - v1.0.2
+    - v1.0.3
+    - stage
+
+angular_lint:
+  image: node:12-alpine
+  stage: ng_quality
+  script:
+    - cd product-webapp-service
+    - cd webapp
+    - npm install
+  only:
+    - main
+    - master
+    - v1.0.0
+    - v1.0.1
+    - v1.0.2
+    - v1.0.3
+    - stage

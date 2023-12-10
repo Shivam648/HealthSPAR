@@ -1,0 +1,47 @@
+.main-wrapper {
+  background-color: #E6E6E6;
+}
+
+/* .profile-img-wrap {
+  height: 120px;
+  position: absolute;
+  width: 120px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.profile-basic {
+  margin-left: 140px;
+}
+
+.profile-img-wrap img {
+  width: 120px;
+  height: 120px;
+} */
+
+.fileupload.btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: rgba(33, 33, 33, 0.5);
+  border-radius: 0;
+  padding: 3px 10px;
+  border: none;
+}
+
+/* .fileupload input.upload {
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  font-size: 20px;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  padding: 5px;
+} */
+
+.btn-text {
+  color: #fff;
+}

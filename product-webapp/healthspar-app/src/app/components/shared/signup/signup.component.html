@@ -1,0 +1,73 @@
+<div class="logo">
+    <img src="assets/images/logospra.png" class="logo">
+  
+  </div>
+  <img src="assets/images/login.jpg" alt="login background" style="height: 100vh;width:100vw" />
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Register</h1>
+                </div>
+                <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary" type="button" (click)="selectRole('PATIENT')">Patient</button>
+                        <button class="btn btn-primary" type="button" (click)="selectRole('HCP')">Hospital</button>
+                    </div>
+  
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">User name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="name" formControlName="name" pattern="[A-Za-Z]+" placeholder="Enter your name" />
+                        <div *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)"
+                            class="text-danger">
+                            Name is required and should contain only alphabetic characters.
+                        </div>
+                    </div>
+  
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address<span
+                                class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" placeholder="Enter your email" />
+                        <div *ngIf="signupForm.get('email')?.hasError('required') && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)"
+                            class="text-danger">
+                            Email is required.
+                        </div>
+                        <div *ngIf="signupForm.get('email')?.hasError('email') && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)"
+                            class="text-danger">
+                            Invalid email format.
+                        </div>
+                    </div>
+  
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password<span
+                                class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                            formControlName="password" minlength="8" placeholder="Enter your password" />
+                        <div *ngIf="signupForm.get('password')?.hasError('required') && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)"
+                            class="text-danger">
+                            Password is required.
+                        </div>
+                        <div *ngIf="signupForm.get('password')?.hasError('minlength') && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)"
+                            class="text-danger">
+                            Password must be at least 8 characters long.
+                        </div>
+                        <div *ngIf="signupForm.get('password')?.hasError('invalidPassword') && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)"
+                            class="text-danger">
+                            Password must contain at least one uppercase letter and one special character.
+                        </div>
+                    </div>
+  
+                    <input type="hidden" [value]="selectedRole" name="role" />
+  
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+  
+                <a routerLink="/login" style="color: white;">Already Registered? Click to login</a>
+            </div>
+        </div>
+    </div>
+  </div>

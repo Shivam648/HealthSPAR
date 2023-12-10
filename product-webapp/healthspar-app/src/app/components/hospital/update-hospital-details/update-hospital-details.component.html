@@ -1,0 +1,656 @@
+<div class="main-wrapper">
+  <app-hcp-d-sidebar></app-hcp-d-sidebar>
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row">
+        <ul class="nav nav-pills mb-4" style="font-size: 18px">
+          <li class="nav-item mx-4" [ngClass]="{ 'disabled-link': step === 1 }">
+            <a
+              class="nav-link"
+              [class.active]="step === 1"
+              [routerLink]="['.']"
+              (click)="step = 1"
+              >Step 1: Basic Details</a
+            >
+          </li>
+          <li
+            class="nav-item mx-4"
+            [ngClass]="{ 'disabled-link': step === 1 || step === 2 }"
+          >
+            <a
+              class="nav-link"
+              [class.active]="step === 2"
+              [routerLink]="['.']"
+              (click)="step === 1 ? null : (step = 2)"
+              >Step 2: Address</a
+            >
+          </li>
+          <li
+            class="nav-item mx-4"
+            [ngClass]="{
+              'disabled-link': step === 1 || step === 2 || step === 3
+            }"
+          >
+            <a
+              class="nav-link"
+              [class.active]="step === 3"
+              [routerLink]="['.']"
+              (click)="step === 1 || step === 2 ? null : (step = 3)"
+              >Step 3: Doctors</a
+            >
+          </li>
+          <li
+            class="nav-item mx-4"
+            [ngClass]="{
+              'disabled-link':
+                step === 1 || step === 2 || step === 3 || step === 4
+            }"
+          >
+            <a
+              class="nav-link"
+              [class.active]="step === 4"
+              [routerLink]="['.']"
+              (click)="
+                step === 1 || step === 2 || step === 3 ? null : (step = 4)
+              "
+              >Step 4: Asked Questions</a
+            >
+          </li>
+         
+        </ul>
+        <hr>
+        <form [formGroup]="hospitalProfileForm" (ngSubmit)="onSubmit()">
+          <div
+            class="form-group"
+            formGroupName="basicDetailForm"
+            *ngIf="step == 1"
+          >
+            <h3><span class="text-primary">Basic Details: </span></h3>
+            <hr />
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="hospitalName" class="col-form-label"
+                    >Hospital Name</label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="hospitalName"
+                    maxlength="100"
+                    placeholder="Enter Your Hospital Name"
+                    class="form-control form-control-lg"
+                    formControlName="hospitalName"
+                    [value]="hospital.hospitalName"
+                  />
+                </div>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalName')?.errors?.['required']"
+                  >please enter hospital name</span
+                >
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="website" class="col-form-label">Website</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="website"
+                    placeholder="Enter Your webiste"
+                    class="form-control form-control-lg"
+                    formControlName="hospitalWebsite"
+                    [value]="hospital.hospitalWebsite"
+                  />
+                </div>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalWebsite')?.errors?.['required']"
+                  >please enter Website</span
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="email" class="col-form-label">Email</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="email"
+                    placeholder="Enter Your Email"
+                    class="form-control form-control-lg"
+                    formControlName="hospitalEmail"
+                    [value]="hospital.hospitalEmail"
+                  />
+                </div>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalEmail')?.errors?.['required']"
+                  >Please enter your email</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalEmail')?.errors?.['email']"
+                  >Invalid email format</span
+                >
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="phone" class="col-form-label">Phone Number</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="phone"
+                    id="phone"
+                    placeholder="Enter Your Phone Number"
+                    class="form-control form-control-lg"
+                    formControlName="hospitalPhoneNumber"
+                    [value]="hospital.hospitalPhoneNumber"
+                  />
+                </div>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalPhoneNumber')?.errors?.['required']"
+                  >Please enter your phone number</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalPhoneNumber')?.errors?.['pattern']"
+                  >Invalid phone number format</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalPhoneNumber')?.errors?.['minlength']"
+                  >Phone number must have at least 10 digits</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalPhoneNumber')?.errors?.['maxlength']"
+                  >Phone number must have at most 10 digits</span
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="beds" class="col-form-label"
+                    >Available Beds</label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="number"
+                    id="beds"
+                    placeholder="Total Available beds"
+                    class="form-control form-control-lg"
+                    formControlName="numberOfBeds"
+                    [value]="hospital.numberOfBeds"
+                  />
+                </div>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('numberOfBeds')?.errors?.['required']"
+                  >Please enter available beds</span
+                >
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="ammenities" class="col-form-label"
+                    >Ammenities</label
+                  >
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="ammenities"
+                    placeholder="Hospital Ammenities"
+                    maxlength="100"
+                    class="form-control form-control-lg"
+                    formControlName="hospitalAmenities"
+                    value="hospital.hospitalAmenities"
+                  />
+                </div>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && basicDetails?.get('hospitalAmenities')?.errors?.['required']"
+                  >Please enter ammenities</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="form-group"
+            formGroupName="addressDetailForm"
+            *ngIf="step == 2"
+          >
+            <div formGroupName="city">
+              <h3><span>Address</span></h3>
+              <hr />
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="col-auto">
+                    <label for="city" class="col-form-label">City</label>
+                  </div>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="city"
+                      placeholder="Enter Your City"
+                      class="form-control form-control-lg"
+                      formControlName="name"
+                      maxlength="20"
+                      [value]="hospital.city.name"
+                    />
+                  </div>
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.name')?.errors?.['required']"
+                    >please enter city name</span
+                  >
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="col-auto">
+                    <label for="district" class="col-form-label"
+                      >District</label
+                    >
+                  </div>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="district"
+                      placeholder="Enter Your District"
+                      class="form-control form-control-lg"
+                      formControlName="district"
+                      maxlength="20"
+                      [value]="hospital.city.district"
+                    />
+                  </div>
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.district')?.errors?.['required']"
+                    >please enter district name</span
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="col-auto">
+                    <label for="state" class="col-form-label">State</label>
+                  </div>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="state"
+                      placeholder="Enter Your State"
+                      class="form-control form-control-lg"
+                      formControlName="state"
+                      maxlength="20"
+                      [value]="hospital.city.state"
+                    />
+                  </div>
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.state')?.errors?.['required']"
+                    >please enter state name</span
+                  >
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="col-auto">
+                    <label for="country" class="col-form-label">Country</label>
+                  </div>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="country"
+                      placeholder="Enter Your Country"
+                      class="form-control form-control-lg"
+                      formControlName="country"
+                      maxlength="20"
+                      [value]="hospital.city.country"
+                    />
+                  </div>
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.country')?.errors?.['required']"
+                    >please enter country name</span
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="col-auto">
+                    <label for="zip" class="col-form-label">Zip</label>
+                  </div>
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="zip"
+                      placeholder="Enter Your Zip"
+                      class="form-control form-control-lg"
+                      formControlName="zip"
+                      maxlength="6"
+                      [value]="hospital.city.zip"
+                    />
+                  </div>
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.zip')?.errors?.['required']"
+                    >Please enter your zip code</span
+                  >
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.zip')?.errors?.['pattern']"
+                    >Invalid zip code format</span
+                  >
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.zip')?.errors?.['minlength']"
+                    >Zip code must have 6 digits</span
+                  >
+                  <span
+                    class="text-danger"
+                    *ngIf="isSubmitted && addressDetails?.get('city.zip')?.errors?.['maxlength']"
+                    >Zip code must have 6 digits</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="step == 3">
+            <h3><span>Doctor</span></h3>
+            <hr />
+            <div formArrayName="doctorDetailForm">
+              <div
+                *ngFor="let doctor of doctorDetails.controls; let i = index"
+                [formGroupName]="i"
+              >
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="dname" class="col-form-label"
+                        >Doctor Name</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <input
+                        type="text"
+                        id="dname"
+                        placeholder="Enter Doctor Name"
+                        class="form-control form-control-lg"
+                        formControlName="doctorName"
+                      />
+                    </div>
+                    <span
+                      class="text-danger"
+                      *ngIf="isSubmitted && getDoctorFormGroup(i)?.get('doctorName')?.errors?.['required']"
+                      >Please enter doctor name</span
+                    >
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="department" class="col-form-label"
+                        >Department</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <input
+                        type="text"
+                        id="department"
+                        placeholder="Enter Doctors Department"
+                        class="form-control form-control-lg"
+                        formControlName="department"
+                      />
+                    </div>
+                    <span
+                      class="text-danger"
+                      *ngIf="isSubmitted && getDoctorFormGroup(i)?.get('department')?.errors?.['required']"
+                      >Please enter department name</span
+                    >
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="qualification" class="col-form-label"
+                        >Qualification</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <input
+                        type="text"
+                        id="qualification"
+                        placeholder="Enter Qualification"
+                        class="form-control form-control-lg"
+                        formControlName="qualification"
+                      />
+                    </div>
+                    <span
+                      class="text-danger"
+                      *ngIf="isSubmitted && getDoctorFormGroup(i)?.get('qualification')?.errors?.['required']"
+                      >Please enter doctors qualification</span
+                    >
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="languagesSpoken" class="col-form-label"
+                        >Known Language</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <input
+                        type="text"
+                        id="languagesSpoken"
+                        placeholder="Enter Known Langiage"
+                        class="form-control form-control-lg"
+                        formControlName="languagesSpoken"
+                      />
+                    </div>
+                    <span
+                      class="text-danger"
+                      *ngIf="isSubmitted && getDoctorFormGroup(i)?.get('languagesSpoken')?.errors?.['required']"
+                      >Please enter doctors known language</span
+                    >
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="yearOfExperience" class="col-form-label"
+                        >Experience</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <input
+                        type="text"
+                        id="yearOfExperience"
+                        placeholder="Enter Year Of Experience"
+                        class="form-control form-control-lg"
+                        formControlName="yearOfExperience"
+                      />
+                    </div>
+                    <span
+                      class="text-danger"
+                      *ngIf="isSubmitted && getDoctorFormGroup(i)?.get('yearOfExperience')?.errors?.['required']"
+                      >Please enter doctor name</span
+                    >
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="startTime" class="col-form-label"
+                        >Start Time</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <input
+                        type="time"
+                        id="startTime"
+                        placeholder="Enter Doctors In Time"
+                        class="form-control form-control-lg"
+                        formControlName="startTime"
+                      />
+                    </div>
+                    <span
+                      class="text-danger"
+                      *ngIf="isSubmitted && getDoctorFormGroup(i)?.get('startTime')?.errors?.['required']"
+                      >Please enter doctors intime</span
+                    >
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="endTime" class="col-form-label"
+                        >End Time</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <input
+                        type="time"
+                        id="endTime"
+                        placeholder="Enter Doctors Out Time"
+                        class="form-control form-control-lg"
+                        formControlName="endTime"
+                      />
+                    </div>
+                    <span
+                      class="text-danger"
+                      *ngIf="isSubmitted && getDoctorFormGroup(i)?.get('endTime')?.errors?.['required']"
+                      >Please enter doctors out time</span
+                    >
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="bio" class="col-form-label">Bio</label>
+                    </div>
+                    <div class="form-outline">
+                      <textarea
+                        type="text"
+                        id="bio"
+                        placeholder="Add more about doctor"
+                        class="form-control form-control-lg"
+                        formControlName="bio"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    class="btn btn-danger mx-2"
+                    (click)="removeDoctor(i)"
+                  >
+                    Remove Doctor
+                  </button>
+                </div>
+              </div>
+
+              <div class="my-2">
+                <button
+                  type="button"
+                  class="btn btn-primary mx-2"
+                  (click)="addDoctor()"
+                >
+                  Add Doctor
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="step == 4">
+            <h3><span>Frequently Asked Questions</span></h3>
+            <hr />
+            <div formArrayName="questionDetailForm">
+              <div
+                *ngFor="let question of questionDetails.controls; let i = index"
+                [formGroupName]="i"
+              >
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="question" class="col-form-label"
+                        >Question</label
+                      >
+                    </div>
+                    <div class="form-outline">
+                      <textarea
+                        type="text"
+                        id="question"
+                        placeholder="Enter Asked Question"
+                        class="form-control form-control-lg"
+                        formControlName="question"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="col-auto">
+                      <label for="answer" class="col-form-label">Answer</label>
+                    </div>
+                    <div class="form-outline">
+                      <textarea
+                        type="text"
+                        id="answer"
+                        placeholder="Enter Answer"
+                        class="form-control form-control-lg"
+                        formControlName="answer"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <button
+                    type="button"
+                    class="btn btn-danger mx-2"
+                    (click)="removeQuestion(i)"
+                  >
+                    Remove Question
+                  </button>
+                </div>
+              </div>
+
+              <div class="my-2">
+                <button
+                  type="button"
+                  class="btn btn-primary mx-2"
+                  (click)="addQuestion()"
+                >
+                  Add Question
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="d-flex align-items-center justify-content-center">
+            <a
+              class="btn btn-primary mx-2"
+              *ngIf="step != 1"
+              (click)="previous()"
+              >Previous</a
+            >
+            <button
+              type="submit"
+              class="btn btn-primary mx-2"
+              *ngIf="step != 4"
+            >
+              Next
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary mx-2"
+              *ngIf="step == 4"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

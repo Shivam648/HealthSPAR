@@ -1,0 +1,110 @@
+<div id="wrapper">
+  <!-- Sidebar -->
+  <nav
+    class="navbar navbar-inverse fixed-top"
+    id="sidebar-wrapper"
+    role="navigation"
+  >
+    <ul class="nav sidebar-nav">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <a href="#">Brand</a>
+        </div>
+      </div>
+      <li><a href="#home">Home</a></li>
+      <li><a routerLink="#">My Profile</a></li>
+      <li><a routerLink="/update-profile">Update Profile</a></li>
+      <li><a href="#team">Logout</a></li>
+    </ul>
+  </nav>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <button
+      type="button"
+      class="hamburger animated fadeInLeft is-closed"
+      data-toggle="offcanvas"
+    >
+      <span class="hamb-top"></span>
+      <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+    </button>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card mb-4">
+            <div class="card-body text-left">
+              <h2><span>Basic Details</span></h2>
+              <hr />
+              <div *ngIf="dbImage">
+                <img [src]="dbImage" alt="Profile Image" class="img-fluid" />
+              </div>
+              
+
+              <h5 class="my-3">
+                Name : <span class="mx-2">{{ patient.patientName }}</span>
+              </h5>
+              <h5 class="my-3">
+                Email : <span class="mx-2">{{ patient.email }}</span>
+              </h5>
+              <h5 class="my-3">
+                Phone Number :
+                <span class="mx-2">{{ patient.phoneNumber }}</span>
+              </h5>
+              <h5 class="my-3">
+                Date Of Birth : <span class="mx-2">{{ patient.dob }}</span>
+              </h5>
+              <h5 class="my-3">
+                Blood Group : <span class="mx-2">{{ patient.bloodGroup }}</span>
+              </h5>
+              <h5 class="my-3">
+                Gender : <span class="mx-2">{{ patient.gender }}</span>
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2><span>Address</span></h2>
+              <hr />
+              <h5 class="my-3">
+                City : <span class="mx-2">{{ patient.cityName }}</span>
+              </h5>
+              <h5 class="my-3">
+                District : <span class="mx-2">{{ patient.district }}</span>
+              </h5>
+              <h5 class="my-3">
+                State : <span class="mx-2">{{ patient.state }}</span>
+              </h5>
+              <h5 class="my-3">
+                Country : <span class="mx-2">{{ patient.country }}</span>
+              </h5>
+              <h5 class="my-3">
+                Zip Code : <span class="mx-2">{{ patient.zip }}</span>
+              </h5>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2><span>Medical History</span></h2>
+              <hr />
+              <h5 class="my-3">
+                City : <span class="mx-2">{{ patient.medicalHistory }}</span>
+              </h5>
+              <h5 class="my-3">
+                District :
+                <span class="mx-2">{{ patient.medicineHistory }}</span>
+              </h5>
+              <h5 class="my-3">
+                State : <span class="mx-2">{{ patient.treatmentHistory }}</span>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /#wrapper -->

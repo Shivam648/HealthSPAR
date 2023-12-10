@@ -1,0 +1,22 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: patient-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: patient_db
+logging:
+  file:
+    name: logs/patient-service.log
+  level:
+    root: info
+    org.springframework.data.mongodb.core.MongoTemplate: debug
+    com.stackroute: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8076/eureka/

@@ -1,0 +1,62 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: authentication-service-route
+          uri: lb://authentication-service
+          predicates:
+            - Path=/api/v1/auth/**
+        - id: eureka-service-route
+          uri: lb://eureka-server
+          predicates:
+            - Path=/api/v1/eureka/**
+        - id: patient-service-route
+          uri: lb://patient-service
+          predicates:
+            - Path=/api/v1/patient/**
+        - id: email-service-route
+          uri: lb://email-service
+          predicates:
+            - Path=/api/v1/email
+        - id: payment-gateway-route
+          uri: lb://payment-gateway
+          predicates:
+            - Path=/api/v1/payment/**
+        - id: recommend-service-route
+          uri: lb://recommend-service
+          predicates:
+            - Path=/api/v1/hospital/**
+        - id: appointment-service-route
+          uri: lb://appointment-service
+          predicates:
+            - Path=/api/v1/appointment/**
+        - id: product-webapp-route
+          uri: lb://product-webapp
+          predicates:
+            - Path=/**
+
+  application:
+    name: api-gateway
+
+  main:
+    web-application-type: reactive
+
+server:
+  port: 8086
+
+cloud:
+  gateway:
+    globalcors:
+      corsConfigurations:
+        '[/**]':
+          allowedOrigins: "*"
+          allowedMethods: "*"
+          allowedHeaders: "*"
+          exposedHeaders: "*"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8076/eureka
+    register-with-eureka: true
+    fetch-registry: true

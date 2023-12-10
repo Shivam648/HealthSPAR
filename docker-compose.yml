@@ -1,0 +1,110 @@
+version: "3.1"
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb-user
+    ports:
+      - "27017:27017"
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Password'
+      MYSQL_DATABASE: authuser
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/password
+
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-server
+    restart: always
+    ports:
+      - "8761:8761"
+
+  api-gateway:
+    build: api-gateway/
+    container_name: api-gateway
+    depends_on:
+      - eureka-server
+    restart: always
+    ports:
+      - "8080:8080"
+
+  authentication-service:
+    container_name: authentication-service
+    build: authentication-service/
+    ports:
+      - "8003:8003"
+    depends_on:
+      - mysql
+      - eureka-server
+    restart: always
+
+  booked-appointments:
+    container_name: booked-appointments
+    build: booked-appointments/
+    ports:
+      - "8004:8004"
+    depends_on:
+      - mysql
+      - eureka-server
+    restart: always
+
+  patient-service:
+    container_name: patient-service
+    build: patient-service/
+    ports:
+      - "8001:8001"
+    depends_on:
+      - mongo
+      - eureka-server
+    restart: always
+
+  recommend-service:
+    container_name: recommend-service
+    build: recommend-service/
+    ports:
+      - "8002:8002"
+    depends_on:
+      - neo4j
+      - eureka-server
+    restart: always
+
+  email-service:
+    container_name: email-service
+    build: email-service/
+    ports:
+      - "8085:8085"
+    depends_on:
+      - eureka-server
+    restart: always
+
+  payment-gateway:
+    container_name: payment-gateway
+    build: payment-gateway/
+    ports:
+      - "8086:8086"
+    depends_on:
+      - eureka-server
+    restart: always
+
+  product-webapp:
+    build: product-webapp/
+    restart: always
+    container_name: product-webapp
+    ports:
+      - "4200:4200"

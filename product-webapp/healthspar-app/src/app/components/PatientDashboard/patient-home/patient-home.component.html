@@ -1,0 +1,130 @@
+<div class="main-wrapper">
+  <app-navbar></app-navbar>
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row">
+        <div class="col-sm-7 col-6">
+          <h4 class="page-title">My Profile</h4>
+        </div>
+
+        <div class="col-sm-5 col-6 text-right m-b-30">
+          <a routerLink="/patient/update" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+        </div>
+      </div>
+      <div class="card-box profile-header">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="profile-view">
+              <div class="profile-img-wrap">
+                <div class="profile-img">
+                  <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                </div>
+              </div>
+              <div class="profile-basic">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="profile-info-left">
+                      <h2 class="user-name m-t-0 mb-0">{{patient.patientName}}</h2>
+                    </div>
+                    <div class="profile-info-left mt-2">
+                      <p class="user-name m-t-0 mb-0">Patient Id: <span>{{patient.patientId}}</span></p>
+                      
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <ul class="personal-info">
+                      <li>
+                        <span class="title">Phone:</span>
+                        <span class="text"><a href="#">{{patient.phoneNumber}}</a></span>
+                      </li>
+                      <li>
+                        <span class="title">Email:</span>
+                        <span class="text"><a href="#">{{patient.email}}</a></span>
+                      </li>
+                    
+                      <li>
+                        <span class="title">Address:</span>
+                        <span class="text">{{patient.cityName}},{{patient.state}},{{patient.country}},{{patient.zip}}</span>
+                      </li>
+                      <br>
+                      <br>
+                      <br>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-tabs">
+        <ul class="nav nav-tabs nav-tabs-bottom">
+          <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">Basic Details</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane show active" id="about-cont">
+            <div class="col-md-12">
+              <div class="card-box">
+                <div class="col-md-7">
+                  <ul class="personal-info">
+                   
+                    <li>
+                      <span class="title">Date Of Birth:</span>
+                      <span class="text">{{patient.dob}}</span>
+                    </li>
+
+                    <li>
+                      <span class="title">Blood Group:</span>
+                      <span class="text">{{patient.bloodGroup}}</span>
+                    </li>
+                   
+                    <li>
+                      <span class="title">Gender:</span>
+                      <span class="text">{{patient.gender}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+      </div>
+      <div class="profile-tabs">
+        <ul class="nav nav-tabs nav-tabs-bottom">
+          <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">Medical History</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane show active" id="about-cont">
+            <div class="col-md-12">
+              <div class="card-box">
+                <div class="col-md-7">
+                  <ul class="personal-info">
+                   
+                    <li>
+                      <span class="title">Medical:</span>
+                      <span class="text">{{patient.medicalHistory}}</span>
+                    </li>
+
+                    <li>
+                      <span class="title">Medicine:</span>
+                      <span class="text">{{patient.medicineHistory}}</span>
+                    </li>
+                   
+                    <li>
+                      <span class="title">Treatment:</span>
+                      <span class="text">{{patient.treatmentHistory}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

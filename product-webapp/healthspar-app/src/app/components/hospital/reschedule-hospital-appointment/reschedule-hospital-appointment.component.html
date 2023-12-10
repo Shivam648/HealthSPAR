@@ -1,0 +1,255 @@
+<div id="wrapper">
+  <!-- Sidebar -->
+  <nav
+    class="navbar navbar-inverse fixed-top"
+    id="sidebar-wrapper"
+    role="navigation"
+  >
+    <ul class="nav sidebar-nav">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <a href="#">Brand</a>
+        </div>
+      </div>
+      <li><a href="#home">Home</a></li>
+      <li><a routerLink="/hospital-appointment">Appointments</a></li>
+      <li><a href="#team">Logout</a></li>
+    </ul>
+  </nav>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <button
+      type="button"
+      class="hamburger animated fadeInLeft is-closed"
+      data-toggle="offcanvas"
+    >
+      <span class="hamb-top"></span>
+      <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+    </button>
+    <div class="container">
+      <div class="row">
+        <!-- Left Column with Image -->
+        <div class="col-md-6 p-0">
+          <img
+            src="assets/images/hospital-page/hero.png"
+            alt="Hero Image"
+            class="img-fluid"
+          />
+        </div>
+
+        <div
+          class="col-md-6 d-flex align-items-center justify-content-center box"
+        >
+          <form
+            class="row g-3 php-email-form"
+            [formGroup]="appointmentForm"
+            id="appointment-form"
+            (ngSubmit)="onSubmit()"
+          >
+            <h1 class="display-5">Reschedule An Appointment</h1>
+            <div class="row mt-2">
+              <div class="col-md-4 form-group">
+                <label for="name"
+                  >Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                  
+                  formControlName="patientName"
+                  [(ngModel)]="appointment.patientName"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('patientName')?.errors?.['required']"
+                  >please enter your name</span
+                >
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="email"
+                  >Email <span class="text-danger">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                  
+                  formControlName="email"
+                  [(ngModel)]="appointment.email"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('email')?.errors?.['required']"
+                  >please enter your email</span
+                ><br />
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('email')?.errors?.['email']"
+                  >Invalid email format</span
+                >
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="phone"
+                  >Phone Number <span class="text-danger">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="phone"
+                  id="phone"
+                  placeholder="Your Phone"
+                  required
+                  
+                  formControlName="phoneNumber"
+                  [value]="appointment.phoneNumber"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('phoneNumber')?.errors?.['required']"
+                  >Please enter your phone number</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('phoneNumber')?.errors?.['pattern']"
+                  >Invalid phone number format</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('phoneNumber')?.errors?.['minlength']"
+                  >Phone number must have at least 10 digits</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('phoneNumber')?.errors?.['maxlength']"
+                  >Phone number must have at most 10 digits</span
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 form-group mt-3">
+                <label for="date"
+                  >Date and Time <span class="text-danger">*</span></label
+                >
+                <input
+                  type="datetime-local"
+                  name="date"
+                  class="form-control datepicker"
+                  id="date"
+                  required
+                  formControlName="dateTime"
+                  [(ngModel)]="appointment.dateTime"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('dateTime')?.errors?.['required']"
+                  >Please enter appointment date</span
+                >
+              </div>
+              <div class="col-md-4 form-group mt-3">
+                <label for="department"
+                  >Department <span class="text-danger">*</span></label
+                >
+                <select
+                  name="department"
+                  id="department"
+                  class="form-select"
+                  formControlName="department"
+                  [(ngModel)]="appointment.department"
+                  required
+                >
+                  <option value="">Select Department</option>
+                  <ng-container *ngFor="let doctor of hospital.doctors">
+                    <option [value]="doctor.department">
+                      {{ doctor.department }}
+                    </option>
+                  </ng-container>
+                </select>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('department')?.errors?.['required']"
+                  >Please select department</span
+                >
+              </div>
+              <div class="col-md-4 form-group mt-3">
+                <label for="doctor"
+                  >Doctor <span class="text-danger">*</span></label
+                >
+                <select
+                  name="doctor"
+                  id="doctor"
+                  formControlName="doctor"
+                  class="form-select"
+                  
+                  [(ngModel)]="appointment.doctor"
+                  required
+                >
+                  <option value="">Select Doctor</option>
+                  <ng-container *ngFor="let doctor1 of hospital.doctors">
+                    <option [value]="doctor1?.doctorName">
+                      {{ doctor1.doctorName }}
+                    </option>
+                  </ng-container>
+                </select>
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('doctor')?.errors?.['required']"
+                  >Please select doctor</span
+                >
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="treatment"
+                  >Treatment For <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  name="treatment"
+                  class="form-control"
+                  id="treatment"
+                  
+                  placeholder="Enter treatment type"
+                  required
+                  formControlName="treatmentType"
+                  [(ngModel)]="appointment.treatmentType"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="isSubmitted && appointmentForm?.get('treatmentType')?.errors?.['required']"
+                  >please enter your name</span
+                >
+              </div>
+              <div class="col-md-6 form-group mt-3">
+                <textarea
+                  class="form-control"
+                  name="message"
+                  rows="4"
+                  placeholder="Message (Optional)"
+                  formControlName="message"
+                  
+                  [(ngModel)]="appointment.message"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Reschedule</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /#wrapper -->

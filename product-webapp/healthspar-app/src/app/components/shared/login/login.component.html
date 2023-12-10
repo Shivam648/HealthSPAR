@@ -1,0 +1,123 @@
+<div class="main">
+  <h1 class="logo me-auto"><a class="text-logo" routerLink="/home">HealthSPAR</a></h1>
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title login">Login as a Patient</div>
+      <div class="title signup">Register as a Patient</div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+        <input type="radio" name="slide" id="login" checked />
+        <input type="radio" name="slide" id="signup" />
+        <label for="login" class="slide login">Login</label>
+        <label for="signup" class="slide signup">SignUp</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+        <form class="login" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="field my-6">
+            <input type="email" placeholder="Email Address" formControlName="email" required />
+            <div *ngIf="
+                loginForm.get('email')?.hasError('required') &&
+                loginForm.get('email')?.touched
+              " class="text-danger">
+              Email is required.
+            </div>
+            <div *ngIf="
+                loginForm.get('email')?.hasError('email') &&
+                loginForm.get('email')?.touched
+              " class="text-danger">
+              Invalid email format.
+            </div>
+          </div>
+          <div class="field my-6">
+            <input type="password" placeholder="Password" formControlName="password" required />
+            <div *ngIf="
+                loginForm.get('password')?.hasError('required') &&
+                loginForm.get('password')?.touched
+              " class="text-danger">
+              Password is required.
+            </div>
+          </div>
+          <!-- <div class="pass-link">
+            <a href="#">Reset password?</a>
+          </div> -->
+          <div class="field btn my-6">
+            <div class="btn-layer"></div>
+            <button type="submit" class="btn text-white" [disabled]="loginForm.invalid">
+              Login
+            </button>
+          </div>
+          <div class="signup-link">
+            Don't Have Account? <a href="">Create A New</a>
+
+            <div class="text-center mt-3">
+              <p class="text-danger">{{ errorMessage }}</p>
+              <p class="text-success">{{ successMessage }}</p>
+            </div>
+          </div>
+        </form>
+        <form class="signup" [formGroup]="signupForm" (ngSubmit)="signup()">
+          <div class="field my-6">
+            <input type="text" placeholder="Name" formControlName="name" required />
+            <div *ngIf="
+                signupForm.get('name')?.invalid &&
+                (signupForm.get('name')?.dirty ||
+                  signupForm.get('name')?.touched)
+              " class="text-danger">
+              Name is required and should contain only alphabetic characters.
+            </div>
+          </div>
+          <div class="field  my-6">
+            <input type="email" placeholder="Email Address" formControlName="email" required />
+            <div *ngIf="
+                signupForm.get('email')?.hasError('required') &&
+                (signupForm.get('email')?.dirty ||
+                  signupForm.get('email')?.touched)
+              " class="text-danger">
+              Email is required.
+            </div>
+            <div *ngIf="
+                signupForm.get('email')?.hasError('email') &&
+                (signupForm.get('email')?.dirty ||
+                  signupForm.get('email')?.touched)
+              " class="text-danger">
+              Invalid email format.
+            </div>
+          </div>
+          <div class="field  my-6">
+            <input type="password" placeholder="Password" formControlName="password" required />
+            <div *ngIf="
+                signupForm.get('password')?.hasError('required') &&
+                (signupForm.get('password')?.dirty ||
+                  signupForm.get('password')?.touched)
+              " class="text-danger">
+              Password is required.
+            </div>
+            <div *ngIf="
+                signupForm.get('password')?.hasError('minlength') &&
+                (signupForm.get('password')?.dirty ||
+                  signupForm.get('password')?.touched)
+              " class="text-danger">
+              Password must be at least 8 characters long.
+            </div>
+            <div *ngIf="
+                signupForm.get('password')?.hasError('invalidPassword') &&
+                (signupForm.get('password')?.dirty ||
+                  signupForm.get('password')?.touched)
+              " class="text-danger">
+              Password must contain at least one uppercase letter and one
+              special character.
+            </div>
+          </div>
+          <div class="field btn my-6">
+            <div class="btn-layer"></div>
+            <button type="submit" class="btn text-white" [disabled]="signupForm.invalid">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

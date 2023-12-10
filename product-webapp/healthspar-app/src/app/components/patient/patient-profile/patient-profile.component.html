@@ -1,0 +1,223 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav
+      id="sidebar"
+      class="col-md-3 col-lg-2 d-md-block bg-light sidebar"
+      style="height: 100vh"
+    >
+      <div class="position-sticky side-navbar">
+        <div class="side-navbar-top">
+          <div class="text-center mt-4">
+            <img
+              src="assets/images/profile.svg"
+              alt="Profile Picture"
+              class="rounded-circle"
+              width="100"
+              height="100"
+            />
+          </div>
+          <h5 class="text-center mt-3">Roopesh Rokade</h5>
+        </div>
+
+        <div class="side-navbar-bottom list-group list-group-flush">
+          <a
+            href="#"
+            class="side-navbar-list list-group-item list-group-item-action bg-light"
+            >Profile Details</a
+          >
+          <a
+            href="#"
+            class="side-navbar-list list-group-item list-group-item-action bg-light"
+            >Update Profile</a
+          >
+          <a
+            href="#"
+            class="side-navbar-list list-group-item list-group-item-action bg-light"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="card shadow-2-strong card-registration"
+        style="border-radius: 15px"
+      >
+        <div class="card-body p-4 p-md-5">
+          <form action="">
+            <h3><span>Basic</span></h3>
+            <hr />
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="name" class="col-form-label">Name</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter Your Name"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="dob" class="col-form-label">Date Of Birth</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="date"
+                    id="dob"
+                    placeholder="Enter Your DOB"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="email" class="col-form-label">Email</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="email"
+                    placeholder="Enter Your Email"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="phone" class="col-form-label">Phone Number</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="phone"
+                    id="phone"
+                    placeholder="Enter Your Phone Number"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="blood" class="col-form-label">Blood Group</label>
+                </div>
+                <select
+                  class="form-select"
+                  id="blood"
+                  aria-label="Select Blood Group"
+                >
+                  <option selected>Select blood group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="gender" class="col-form-label">Gender</label>
+                </div>
+                <select
+                  class="form-select"
+                  id="gender"
+                  aria-label="Select Blood Group"
+                >
+                  <option selected>Select Your Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <h3><span>Address</span></h3>
+            <hr />
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="city" class="col-form-label">City</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="city"
+                    placeholder="Enter Your City"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="col-auto">
+                  <label for="district" class="col-form-label">District</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="district"
+                    placeholder="Enter Your District"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="col-auto">
+                  <label for="state" class="col-form-label">State</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="state"
+                    placeholder="Enter Your State"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="col-auto">
+                  <label for="country" class="col-form-label">Country</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="country"
+                    placeholder="Enter Your Country"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="col-auto">
+                  <label for="zip" class="col-form-label">Zip</label>
+                </div>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter Your Zip"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

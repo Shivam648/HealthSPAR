@@ -1,0 +1,69 @@
+<div class="main-wrapper">
+  <app-hcp-d-sidebar></app-hcp-d-sidebar>
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row">
+        <div class="col-sm-4 col-3">
+          <h4 class="page-title">Doctors</h4>
+        </div>
+        <div class="col-sm-8 col-9 text-right m-b-20">
+          <a
+            [routerLink]="['/hospital/add-doctor']"
+            class="btn btn-primary btn-rounded float-right"
+            ><i class="fa fa-plus"></i> Add Doctor</a
+          >
+        </div>
+      </div>
+      <div class="row doctor-grid">
+        <div
+          class="col-md-4 col-sm-4 col-lg-3"
+          *ngFor="let doctor of hospital.doctors; let i = index"
+        >
+          <div class="profile-widget">
+            <div class="doctor-img">
+              <a class="avatar" [routerLink]="['/hospital/doctor',i]"
+                ><img
+                  alt=""
+                  [src]="
+                    'http://localhost:8070/api/v1/hospital/get/doctor/image/' +
+                    doctor.fileName
+                  "
+              /></a>
+            </div>
+            <div class="dropdown profile-action">
+              <a
+                href="#"
+                class="action-icon dropdown-toggle"
+                data-toggle="dropdown"
+                aria-expanded="false"
+                ><i class="fa fa-ellipsis-v"></i
+              ></a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a
+                  class="dropdown-item"
+                  href="/edit-doctor"
+                  [routerLink]="['/hospital/edit-doctor',i]"
+                  ><i class="fa fa-pencil m-r-5"></i> Edit</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#delete_doctor"
+                  (click)="removeDoctor(i)"
+                  ><i class="fa fa-trash-o m-r-5"></i> Delete</a
+                >
+              </div>
+            </div>
+            <h4 class="doctor-name text-ellipsis">
+              Dr. {{ doctor.doctorName }}
+            </h4>
+            <div class="user-country">
+              {{ doctor.department }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

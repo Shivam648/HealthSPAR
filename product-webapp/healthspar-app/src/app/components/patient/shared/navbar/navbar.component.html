@@ -1,0 +1,37 @@
+<body>
+  <app-hcp-d-header></app-hcp-d-header>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+      <div id="sidebar-menu" class="sidebar-menu">
+        <ul>
+          <li class="menu-title">Main</li>
+          <li class="active">
+            <a routerLink="/patient/index"
+              ><i class="fa fa-dashboard"></i> <span>Home</span></a
+            >
+          </li>
+          <li>
+            <a routerLink="/patient/hospital"
+              ><i class="fa fa-user-md"></i> <span>Hospital</span></a
+            >
+          </li>
+          <li>
+            <a routerLink="/patient/appointment"
+              ><i class="fa fa-calendar"></i> <span>Appointments</span></a
+            >
+          </li>
+          <li>
+            <a routerLink="/patient/display"
+              ><i class="fa fa-user"></i> <span>Profile</span></a
+            >
+          </li>
+          <li>
+            <a (click)="logout()"
+              ><i class="fa fa-plus-square-o"></i> <span>Logout</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
